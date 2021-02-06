@@ -16,3 +16,5 @@ jobs:
         run: chmod +x ./nasa-mars-rover-server/gradlew
       - name: Build with Gradle
         run: ./nasa-mars-rover-server/gradlew build
+      - name: Test with Gradle
+        run: ./nasa-mars-rover-server/gradlew test
