@@ -1,4 +1,4 @@
-name: Java CI
+name: nasa-mars-rover-server
 
 on: [push]
 

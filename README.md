@@ -1,2 +1,2 @@
 # nasa-mars-rover
-This project is for consuming the NASA Mars Rover Photos API by date and displaying them in a web UI
+![nasa-mars-rover-server](https://github.com/ZachSand/nasa-mars-rover/workflows/nasa-mars-rover-server/badge.svg)
