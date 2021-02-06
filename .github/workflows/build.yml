@@ -16,7 +16,7 @@ jobs:
           java-version: 11
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-        working-directory: ${{env.serverWorkingDirectory}}
+        working-directory: ${{env.server-working-directory}}
       - name: Build with Gradle
         run: ./gradlew build
-        working-directory: ${{env.serverWorkingDirectory}}
+        working-directory: ${{env.server-working-directory}}
