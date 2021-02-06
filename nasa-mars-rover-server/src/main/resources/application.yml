@@ -1,0 +1,19 @@
+spring:
+  codec:
+    max-in-memory-size: 3MB
+  jackson:
+    property_naming_strategy: SNAKE_CASE
+  webflux:
+    base-path: /marsrover
+  error:
+    whitelabel:
+      enabled: false
+
+nasa:
+  mars:
+    rover:
+      api:
+        base-rover-url: https://mars-photos.herokuapp.com/api/v1
+        manifest-endpoint: /manifests/%s
+        rovers-endpoint: /rovers
+        rover-photos-endpoint: /rovers/%s/photos
