@@ -3,8 +3,10 @@ name: Java CI
 on: [push]
 
 jobs:
-  build:
+  build-server:
     runs-on: ubuntu-latest
+    env: 
+      server-working-directory: ./nasa-mars-rover-server
 
     steps:
       - uses: actions/checkout@v2
@@ -13,8 +15,8 @@ jobs:
         with:
           java-version: 11
       - name: Make gradlew executable
-        run: chmod +x ./nasa-mars-rover-server/gradlew
+        run: chmod +x ./gradlew
+        server-working-directory: ${{env.serverWorkingDirectory}}
       - name: Build with Gradle
-        run: ./nasa-mars-rover-server/gradlew build
-      - name: Test with Gradle
-        run: ./nasa-mars-rover-server/gradlew test
+        run: ./gradlew build
+        server-working-directory: ${{env.serverWorkingDirectory}}
