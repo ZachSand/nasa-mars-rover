@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -12,5 +12,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: Make gradlew executable
+        run: chmod +x ./nasa-mars-rover-server/gradlew
       - name: Build with Gradle
-        run: ./gradlew build
+        run: .nasa-mars-rover-server/gradlew build
