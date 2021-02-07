@@ -21,14 +21,14 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
         working-directory: ${{env.server-working-directory}}
-        
+
   build-ui:
     runs-on: ubuntu-latest
     env: 
       ui-working-directory: ./nasa-mars-rover-ui
 
     steps:
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: Cache node modules
         uses: actions/cache@v1
         with:
