@@ -1,5 +1,6 @@
 # nasa-mars-rover
 ![nasa-mars-rover-server](https://github.com/ZachSand/nasa-mars-rover/workflows/nasa-mars-rover-server/badge.svg)
+![nasa-mars-rover-ui](https://github.com/ZachSand/nasa-mars-rover/workflows/nasa-mars-rover-ui/badge.svg)
 
 ## nasa-mars-rover-server
 The nasa-mars-rover-server uses Spring Boot Webflux. It isn't entirely a reactive application but I wanted to get some experience
