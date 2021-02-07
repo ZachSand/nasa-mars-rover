@@ -21,6 +21,6 @@ public class Manifest {
 
     private int totalPhotos;
 
-    private ManifestPhoto[] manifestPhotos;
+    private ManifestPhoto[] photos;
 
 }

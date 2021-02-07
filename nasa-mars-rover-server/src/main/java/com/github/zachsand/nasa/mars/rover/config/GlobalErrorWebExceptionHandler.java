@@ -47,8 +47,9 @@ public class GlobalErrorWebExceptionHandler extends AbstractErrorWebExceptionHan
         Map<String, Object> errorPropertiesMap = getErrorAttributes(request,
                 ErrorAttributeOptions.defaults());
 
-        return ServerResponse.status(HttpStatus.BAD_REQUEST)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromValue(errorPropertiesMap));
+        return ServerResponse.status(
+            errorPropertiesMap.containsKey("status") ? (HttpStatus) errorPropertiesMap.get("status") : HttpStatus.BAD_REQUEST)
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(BodyInserters.fromValue(errorPropertiesMap));
     }
 }

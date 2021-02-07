@@ -17,6 +17,7 @@ public class DateUtil {
                     + "[MMMM d, uuuu]"
                     + "[MMM-d-uuuu]"
                     + "[uuuu-MM-dd]"
+                    + "[M/d/uuuu]"
             , Locale.ENGLISH)
             .withResolverStyle(ResolverStyle.STRICT);
 
