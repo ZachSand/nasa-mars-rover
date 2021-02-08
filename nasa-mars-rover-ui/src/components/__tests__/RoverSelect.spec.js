@@ -6,6 +6,7 @@ fetchMock.enableMocks()
 
 const roverName = 'Curiosity'
 const roverData = { rovers: [{ name: roverName }] }
+process.env.VUE_APP_ROVER_API_BASE_URL = 'http://localhost:8080/marsrover/api/rovers/'
 
 beforeEach(() => {
   fetch.resetMocks()
