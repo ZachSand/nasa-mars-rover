@@ -26,7 +26,7 @@ browser.
 
 ### Motivation 
 
-This project was motivated by the followin coding excercise
+This project was motivated by the following coding excercise
 > Using the API described here (https://api.nasa.gov/api.html ) build a project in GitHub that calls the Mars Rover API and selects a picture on a given day. We want your application to download and store each image locally. 
 > * Use list of dates below to pull the images that were captured on that day by reading in a .txt file
 >  * 02/27/17
