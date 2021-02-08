@@ -4,14 +4,22 @@ import com.github.zachsand.nasa.mars.rover.config.NasaApiConfiguration;
 import com.github.zachsand.nasa.mars.rover.model.PhotoList;
 import com.github.zachsand.nasa.mars.rover.model.PhotosManifest;
 import com.github.zachsand.nasa.mars.rover.model.RoverList;
+import com.github.zachsand.nasa.mars.rover.util.DateUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
+
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * {@link NasaRoverClient} Client for querying the NASA Mars Rover API.
@@ -80,10 +88,24 @@ public class NasaRoverClient {
      * @return {@link Mono} of {@link PhotoList} with photo metadata from the NASA Mars Rover API.
      */
     public Mono<PhotoList> getRoverPhotos(String roverName, MultiValueMap<String, String> queryParams) {
+
+        /* Ugly way (but works) to change query param for earth date since input query params are immutable */
+        LinkedMultiValueMap queryParameters = new LinkedMultiValueMap<String, String>();
+        queryParameters.putAll(queryParams);
+        List<String> earthDates = queryParams.get("earth_date");
+        if(!CollectionUtils.isEmpty(earthDates)) {
+            Optional<LocalDate> localDate =  DateUtil.getLocalDateFromDate(earthDates.get(0));
+            if(localDate.isPresent()) {
+                queryParameters.put("earth_date", Collections.singletonList(DateUtil.convertDateToNasaFormat(localDate.get())));
+            } else {
+                return Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad earth_date format given"));
+            }
+        }
+
         return nasaRoverWebClient.get()
                 .uri(uriBuilder ->
                     uriBuilder.path(String.format(nasaApiConfiguration.getRoverPhotosEndpoint(), roverName))
-                        .queryParams(queryParams)
+                        .queryParams(queryParameters)
                         .build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()

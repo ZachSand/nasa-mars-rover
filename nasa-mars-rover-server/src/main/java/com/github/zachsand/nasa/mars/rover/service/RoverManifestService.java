@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.MultiValueMap;
-import org.springframework.util.StringUtils;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
@@ -86,7 +85,7 @@ public class RoverManifestService {
             return Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "The rover name was not found"));
         }
 
-        if(StringUtils.hasText(earthDate.get(0))) {
+        if(CollectionUtils.isEmpty(sol)) {
             Optional<LocalDate> requestedDateInstance = DateUtil.getLocalDateFromDate(earthDate.get(0));
             if(requestedDateInstance.isEmpty()) {
                 return Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid earth_date format"));
@@ -108,7 +107,7 @@ public class RoverManifestService {
     private Mono<ManifestPhoto> getManifestForSol(PhotosManifest photosManifest, String sol) {
         try{
             int solNum = Integer.parseInt(sol);
-            Optional<ManifestPhoto> photoManifest = Arrays.stream(photosManifest.getPhotoManifest().getManifestPhotos())
+            Optional<ManifestPhoto> photoManifest = Arrays.stream(photosManifest.getPhotoManifest().getPhotos())
                     .filter(manifestPhoto -> manifestPhoto.getSol() == solNum)
                     .findFirst();
 
@@ -130,7 +129,7 @@ public class RoverManifestService {
      * containing the appropriate {@link HttpStatus} and message for the error.
      */
     private Mono<ManifestPhoto> getManifestForDate(PhotosManifest photosManifest, String earthDate) {
-        Optional<ManifestPhoto> photoManifest = Arrays.stream(photosManifest.getPhotoManifest().getManifestPhotos())
+        Optional<ManifestPhoto> photoManifest = Arrays.stream(photosManifest.getPhotoManifest().getPhotos())
                 .filter(manifestPhoto -> manifestPhoto.getEarthDate().equals(earthDate))
                 .findFirst();
 

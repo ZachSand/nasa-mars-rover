@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       server-working-directory: ./nasa-mars-rover-server
+      ui-working-directory: ./nasa-mars-rover-ui
 
     steps:
       - uses: actions/checkout@v2
@@ -20,3 +21,4 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
         working-directory: ${{env.server-working-directory}}
+        

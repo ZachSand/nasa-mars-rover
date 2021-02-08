@@ -1,0 +1,33 @@
+name: nasa-mars-rover-ui
+
+on: [push]
+
+jobs:
+  build-ui:
+    runs-on: ubuntu-latest
+    env: 
+      ui-working-directory: ./nasa-mars-rover-ui
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Install
+        run: npm install
+        working-directory: ${{env.ui-working-directory}}
+
+      - name: Test
+        run: npm run test:unit
+        working-directory: ${{env.ui-working-directory}}
+
+      - name: Build
+        run: npm run build
+        working-directory: ${{env.ui-working-directory}}
+        
