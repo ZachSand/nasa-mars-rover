@@ -16,7 +16,7 @@ server, so I didn't want to call it out below.
 
 
 ## Project setup
-**For functionality the [API server](nasa-mars-rover-server) needs to be running, otherwise the application won't do much.**
+**For functionality the nasa-mars-rover-server needs to be running, otherwise the application won't do much.**
 ```
 npm install
 ```
