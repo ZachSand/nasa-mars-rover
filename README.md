@@ -3,7 +3,7 @@
 ![nasa-mars-rover-ui](https://github.com/ZachSand/nasa-mars-rover/workflows/nasa-mars-rover-ui/badge.svg)
 
 
-## server
+## API Server
 
 The [nasa-mars-rover-server](nasa-mars-rover-server) is a Java 11 [Spring Boot Webflux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html) 
 application that hosts a minimal API based on data from the [NASA Mars Rover API](https://api.nasa.gov/). See the respective project's README for more details.
