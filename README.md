@@ -26,7 +26,7 @@ browser.
 
 ### Motivation 
 
-This project was motivated by the a coding excercise
+This project was motivated by the followin coding excercise
 > Using the API described here (https://api.nasa.gov/api.html ) build a project in GitHub that calls the Mars Rover API and selects a picture on a given day. We want your application to download and store each image locally. 
 > * Use list of dates below to pull the images that were captured on that day by reading in a .txt file
 >  * 02/27/17
@@ -35,7 +35,8 @@ This project was motivated by the a coding excercise
 >  * April 31, 2018
 
 The [PhotoDownloadE2ETest](nasa-mars-rover-server/src/test/java/com/github/zachsand/nasa/mars/rover/PhotoDownloadE2ETest.java) reads in the 
-[photo-date.txt](nasa-mars-rover-server/src/test/resources/photo-dates.txt) and downloads the images. 
+[photo-date.txt](nasa-mars-rover-server/src/test/resources/photo-dates.txt) and downloads the images. Also, April 31, 2018 isn't a valid date so this
+gets filtered out during the process due to the strict date formatter. 
 
 The following API endpoint allows for downloading a photo locally. 
 - GET a single photo to download: `/marsrover/api/rovers/{roverName}/photo/{id}?earth_date=<some-date>`
