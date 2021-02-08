@@ -17,7 +17,7 @@ describe('RoverSelect.vue', () => {
     shallowMount(RoverSelect)
     expect(fetch).toHaveBeenCalledTimes(1)
     expect(fetch).toHaveBeenCalledWith(
-      'http://localhost:8080/marsrover/api/rovers', {
+      process.env.VUE_APP_ROVER_API_BASE_URL, {
         headers: {
           'content-type': 'application/json'
         },
