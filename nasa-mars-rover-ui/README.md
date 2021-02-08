@@ -1,5 +1,5 @@
 # nasa-mars-rover-ui
-The [nasa-mars-rover-ui](nasa-mars-rover-ui) is a simple [Vue 3](https://v3.vuejs.org/) application that consumes the API from the [nasa-mars-rover-server](nasa-mars-rover-server).
+The nasa-mars-rover-ui is a simple [Vue 3](https://v3.vuejs.org/) application that consumes the API from the nasa-mars-rover-server.
 It mainly consists of different options for the user to query for photos and then display those photos. The UI is built with [Element Plus](https://element-plus.org/#/en-US), a
 popular Vue 3 component library, and it uses the native [JavaScript Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). 
 
