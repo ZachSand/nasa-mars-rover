@@ -20,11 +20,11 @@ in one place, but I can still extend it to be used in other parts of the applica
       - earth_date: Date on earth the photo was taken 
           - example: `2020-01-01`
       - sol: Number of days from when the rover landed
-          - example: 1002
+          - example: `1002`
       - page: The page to return
-          - example: 5
+          - example: `5`
       - per_page: The number of photos per page
-          - example: 25
+          - example: `25`
     
 
 - GET `/marsrover/api/rovers/{roverName}/manifest`
@@ -33,7 +33,7 @@ in one place, but I can still extend it to be used in other parts of the applica
       - earth_date: Date on earth the photo was taken
           - example `2020-01-01`
       - sol: Number of days from when the rover landed
-        - example: 1002
+        - example: `1002`
 
 
 - GET `/marsrover/api/rovers/{roverName}/photo/{id}`
@@ -71,3 +71,4 @@ Access the application API through localhost:8080
 - Refactor whatever imperative logic there is still to be reactive
 - Better use of cache
 - Better error handling rather than the global handling currently in place
+- Swagger docs or similar for API documentation
