@@ -22,7 +22,7 @@ export default {
 
     function fetchRovers () {
       loading.value = true
-      return fetch('http://localhost:8080/marsrover/api/rovers', {
+      return fetch(process.env.VUE_APP_ROVER_API_BASE_URL, {
         method: 'get',
         headers: {
           'content-type': 'application/json'

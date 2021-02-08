@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  nasa-mars-rover-server:
+    image: com.github.zachsand/nasa-mars-rover-server
+    container_name: zachsand-nasa-mars-rover-server
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+
+  nasa-mars-rover-ui:
+    build: ./nasa-mars-rover-ui
+    container_name: zachsand-nasa-mars-rover-ui
+    networks:
+      - backend
+    ports:
+      - "8081:8081"
+
+networks:
+  backend:

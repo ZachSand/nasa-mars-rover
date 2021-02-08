@@ -107,7 +107,7 @@ export default {
     },
     fetchManifest () {
       const queryParams = this.sol ? '?sol=' + this.sol : '?earth_date=' + this.earthDate.toLocaleDateString('en-US')
-      return fetch('http://localhost:8080/marsrover/api/rovers/' + this.roverName.toLowerCase() + '/manifest' + queryParams, {
+      return fetch(process.env.VUE_APP_ROVER_API_BASE_URL + this.roverName.toLowerCase() + '/manifest' + queryParams, {
         method: 'get',
         headers: {
           'content-type': 'application/json'
@@ -134,7 +134,7 @@ export default {
     },
     fetchPhotos () {
       const queryParams = this.sol ? '?sol=' + this.sol : '?earth_date=' + this.earthDate.toLocaleDateString('en-US')
-      return fetch('http://localhost:8080/marsrover/api/rovers/' + this.roverName.toLowerCase() + '/photos' + queryParams, {
+      return fetch(process.env.VUE_APP_ROVER_API_BASE_URL + this.roverName.toLowerCase() + '/photos' + queryParams, {
         method: 'get',
         headers: {
           'content-type': 'application/json'
